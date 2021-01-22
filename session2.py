@@ -14,6 +14,9 @@ class Something(object):
         super().__init__()
         self.something_new = None
 
+    def __repr__(self):
+        return f'Representation for Something {hex(id(self))}'
+
 
 class SomethingNew(object):
 
@@ -22,19 +25,23 @@ class SomethingNew(object):
         self.i = i
         self.something = something
 
+    def __repr__(self):
+        return f'Representation for SomethingNew {hex(id(self))}'
 
 def add_something(collection: List[Something], i: int):
     something = Something()
     something.something_new = SomethingNew(i, something)
     collection.append(something)
+    something.something_new = None
 
-def reserved_Function():
+def reserved_function():
     # to be used in future if required
     pass
 
 def clear_memory(collection: List[Something]):
     # you probably need to add some comment here
     collection.clear()
+    # collection=None
 
 
 def critical_function():
@@ -50,8 +57,8 @@ def critical_function():
 
 # DO NOT CHANGE THIS PROGRAM
 def compare_strings_old(n):
-    a = 'a long string that is not intered' * 200
-    b = 'a long string that is not intered' * 200
+    a = 'a long string that is not interned' * 200
+    b = 'a long string that is not interned' * 200
     for i in range(n):
         if a == b:
             pass
@@ -62,4 +69,5 @@ def compare_strings_old(n):
 
 # YOU NEED TO CHANGE THIS PROGRAM
 def compare_strings_new(n):
-    time.sleep(6) # remove this line, this is just to simulate your "slow" code
+    time.sleep(0.1) # remove this line, this is just to simulate your "slow" code
+    # pass
